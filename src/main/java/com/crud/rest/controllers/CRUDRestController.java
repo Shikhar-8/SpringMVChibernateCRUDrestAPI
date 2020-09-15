@@ -17,7 +17,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.crud.rest.beans.MyCustomer;
 import com.crud.rest.service.CustomerService;
 
-@RestController // combination of @Controller and @ResponseBody annotations
+@RestController 
 public class CRUDRestController {
 
 	@Autowired
@@ -36,9 +36,9 @@ public class CRUDRestController {
 		} else {
 
 			customerService.saveCustomer(customer);
-			HttpHeaders headers = new HttpHeaders();// just to customise what POSTMAN will show message after a query is succcessfully processed i have done all this.
+			HttpHeaders headers = new HttpHeaders();
 			headers.setLocation(ucb.path("/customer/{id}").buildAndExpand(customer.getId()).toUri());
-			return new ResponseEntity<Void>(HttpStatus.CREATED); // these are the response shown by POSTMAN when you enter data
+			return new ResponseEntity<Void>(HttpStatus.CREATED); 
 		}
 	}
 
